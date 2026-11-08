@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es" data-theme="expediente">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Red de Corrupción Política</title>
+  <meta name="description" content="Mapa interactivo de casos de corrupción política en España: políticos, partidos, comunidades y estado judicial de cada caso, con enlaces a las fuentes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="marca">
+      <button class="btn-icono solo-movil" id="abrir-filtros" aria-label="Abrir filtros">☰</button>
+      <div>
+        <h1>Red de Corrupción Política <span class="pais">· España</span></h1>
+        <p class="subtitulo">Políticos, casos, partidos y estado judicial · <span id="actualizado"></span></p>
+      </div>
+    </div>
+    <div class="cabecera-acciones">
+      <div class="vistas" role="tablist" aria-label="Vista">
+        <button role="tab" class="vista activa" data-vista="red" aria-selected="true">Red</button>
+        <button role="tab" class="vista" data-vista="listado" aria-selected="false">Listado</button>
+      </div>
+      <label class="selector-tema">
+        <span>Estilo</span>
+        <select id="tema" aria-label="Estilo visual">
+          <option value="expediente">Expediente</option>
+          <option value="hemeroteca">Hemeroteca</option>
+          <option value="radar">Radar</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <div class="estructura">
+    <!-- ====================== FILTROS ====================== -->
+    <aside class="filtros" id="filtros" aria-label="Filtros">
+      <div class="filtros-cabecera solo-movil">
+        <strong>Filtros</strong>
+        <button class="btn-icono" id="cerrar-filtros" aria-label="Cerrar filtros">✕</button>
+      </div>
+
+      <div class="grupo">
+        <label for="buscar" class="titulo-grupo">Buscar</label>
+        <input id="buscar" type="search" placeholder="Nombre, cargo o caso…" autocomplete="off">
+      </div>
+
+      <div class="grupo">
+        <div class="titulo-grupo">Agrupar en nubes por</div>
+        <div class="segmentado" id="agrupar">
+          <button data-valor="caso" class="activo" title="Partido en el que militaba cuando ocurrieron la mayoría de sus casos">Partido del caso</button>
+          <button data-valor="actual" title="Partido actual o último conocido">Partido actual</button>
+        </div>
+      </div>
+
+      <div class="grupo">
+        <div class="titulo-grupo">Color de los nodos</div>
+        <div class="segmentado" id="colorear">
+          <button data-valor="partido" class="activo">Partido</button>
+          <button data-valor="estado">Estado judicial</button>
+        </div>
+      </div>
+
+      <div class="grupo">
+        <div class="titulo-grupo fila">Partido <span class="nota">(en el momento del caso)</span>
+          <button class="enlace-mini" data-todos="partidos">todos / ninguno</button></div>
+        <div class="chips" id="f-partidos"></div>
+      </div>
+
+      <div class="grupo">
+        <div class="titulo-grupo fila">Estado del caso
+          <button class="enlace-mini" data-todos="estados">todos / ninguno</button></div>
+        <div class="checks" id="f-estados"></div>
+      </div>
+
+      <div class="grupo">
+        <label for="f-ccaa" class="titulo-grupo">Comunidad autónoma</label>
+        <select id="f-ccaa">
+          <option value="">Todas</option>
+        </select>
+      </div>
+
+      <div class="grupo">
+        <label for="f-min" class="titulo-grupo">Número mínimo de casos: <output id="f-min-valor">1</output></label>
+        <input id="f-min" type="range" min="1" max="3" value="1" step="1">
+      </div>
+
+      <div class="grupo">
+        <div class="titulo-grupo">Año de inicio del caso: <output id="f-anios-valor"></output></div>
+        <div class="doble-rango">
+          <input id="f-desde" type="range" aria-label="Desde">
+          <input id="f-hasta" type="range" aria-label="Hasta">
+        </div>
+      </div>
+
+      <div class="grupo">
+        <label class="check"><input type="checkbox" id="f-cambio"> Solo quien cambió de partido</label>
+        <label class="check"><input type="checkbox" id="f-enlaces" checked> Mostrar conexiones por caso compartido</label>
+      </div>
+
+      <button class="btn" id="reset">Restablecer filtros</button>
+
+      <div class="aviso">
+        <strong>Presunción de inocencia.</strong> Estar investigado o pendiente de juicio no implica culpabilidad.
+        Los datos proceden de prensa, notas del CGPJ y enciclopedias, con fecha de corte indicada. Si ves un error,
+        consulta las fuentes enlazadas en cada caso.
+      </div>
+    </aside>
+
+    <!-- ====================== LIENZO ====================== -->
+    <main class="principal">
+      <div class="resumen" id="resumen" aria-live="polite"></div>
+
+      <section class="vista-red" id="vista-red">
+        <svg id="grafo" role="img" aria-label="Red de políticos agrupados por partido"></svg>
+        <div class="leyenda" id="leyenda"></div>
+        <div class="controles-zoom">
+          <button class="btn-icono" id="zoom-mas" aria-label="Acercar">+</button>
+          <button class="btn-icono" id="zoom-menos" aria-label="Alejar">−</button>
+          <button class="btn-icono" id="zoom-ajustar" aria-label="Encajar">⤢</button>
+        </div>
+        <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+        <p class="ayuda">Haz clic en un político para ver sus casos y fuentes · arrastra para mover · rueda para zoom</p>
+      </section>
+
+      <section class="vista-listado" id="vista-listado" hidden>
+        <table class="tabla">
+          <thead>
+            <tr><th>Político</th><th>Partido actual</th><th>Comunidad</th><th>Casos</th><th>Situación</th></tr>
+          </thead>
+          <tbody id="tabla-cuerpo"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- ====================== PANEL DETALLE ====================== -->
+    <aside class="panel" id="panel" aria-label="Detalle" hidden>
+      <button class="btn-icono cerrar-panel" id="cerrar-panel" aria-label="Cerrar">✕</button>
+      <div id="panel-contenido"></div>
+    </aside>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script src="data/datos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
