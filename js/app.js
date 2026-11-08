@@ -236,8 +236,8 @@
   const sim = d3.forceSimulation()
     .force("carga", d3.forceManyBody().strength(-60).distanceMax(220))
     .force("colision", d3.forceCollide().radius(n => radio(n) + 11).iterations(3))
-    .force("x", d3.forceX(n => centros.get(n.grupo)?.x ?? 0).strength(0.09))
-    .force("y", d3.forceY(n => centros.get(n.grupo)?.y ?? 0).strength(0.09))
+    .force("x", d3.forceX(n => centros.get(n.grupo)?.x ?? 0).strength(0.11))
+    .force("y", d3.forceY(n => centros.get(n.grupo)?.y ?? 0).strength(0.11))
     .force("enlaces", d3.forceLink().id(n => n.id).distance(46)
       .strength(l => (l.source.grupo === l.target.grupo ? 0.08 : 0.004)))
     .alphaDecay(0.035)
@@ -251,9 +251,11 @@
   function calcularCentros() {
     const { w, h } = tamLienzo();
     const grupos = d3.rollup(nodos, v => v.length, n => n.grupo);
+    // El peso de cada nube tiene en cuenta el número de nodos y la longitud de su etiqueta,
+    // para que los partidos pequeños con nombres largos no se pisen entre sí.
     const jer = d3.hierarchy({ children: [...grupos].map(([g, n]) => ({ g, n })) })
-      .sum(d => (d.n ? Math.pow(d.n, 1.35) + 2 : 0));
-    d3.pack().size([w, h]).padding(Math.min(w, h) * 0.06)(jer);
+      .sum(d => (d.n ? Math.max(Math.pow(d.n, 1.35) + 4, Math.pow(nombrePartido(d.g).length / 3.2, 2)) : 0));
+    d3.pack().size([w, h]).padding(Math.min(w, h) * 0.035)(jer);
     centros = new Map(jer.leaves().map(l => [l.data.g, { x: l.x, y: l.y }]));
   }
 

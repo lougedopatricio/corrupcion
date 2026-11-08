@@ -15,7 +15,8 @@
  *       historial[]  -> { partido, desde, hasta }   (trayectoria de partidos)
  *       casos[]      -> { caso, partido, estado, firme, anio, detalle }
  *           partido  = partido en el que militaba cuando ocurrieron los hechos
- *           estado   = investigacion | juicio | condenado | absuelto | archivado | anulado
+ *                      ("NINGUNO" = sin partido o militancia no confirmada)
+ *           estado   = investigacion | juicio | condenado | absuelto | archivado | anulado (incluye prescrito o extinguido)
  *           firme    = true | false | null (desconocido / no aplica)
  */
 window.DATOS = {
@@ -33,8 +34,21 @@ window.DATOS = {
     UM:      { nombre: "Unió Mallorquina",     color: "#F08A00" },
     IU:      { nombre: "Izquierda Unida",      color: "#A3172B" },
     PODEMOS: { nombre: "Podemos",              color: "#6E2A84" },
+    UDC:     { nombre: "Unió Democràtica",     color: "#3F51B5" },
+    ERC:     { nombre: "ERC",                  color: "#FFA000" },
+    UPN:     { nombre: "UPN",                  color: "#455A64" },
+    PAR:     { nombre: "Partido Aragonés",     color: "#B8860B" },
+    UPCA:    { nombre: "UPCA",                 color: "#00ACC1" },
+    PIL:     { nombre: "Independientes de Lanzarote", color: "#558B2F" },
+    PA:      { nombre: "Partido Andalucista",  color: "#2E7D32" },
+    PSA:     { nombre: "Partido Socialista de Andalucía", color: "#1B5E20" },
+    CPM:     { nombre: "Coalición por Melilla", color: "#C2185B" },
+    DO:      { nombre: "Democracia Ourensana", color: "#FF8A65" },
+    ENSUNEIX:{ nombre: "Ens Uneix",            color: "#827717" },
+    COMPROMIS:{ nombre: "Compromís",           color: "#E65100" },
+    VOX:     { nombre: "Vox",                  color: "#63BE21" },
     MIXTO:   { nombre: "Grupo Mixto / no adscrito", color: "#8A8F98" },
-    NINGUNO: { nombre: "Sin partido",          color: "#5F646C" }
+    NINGUNO: { nombre: "Sin partido / no consta", color: "#5F646C" }
   },
 
   estados: {
@@ -43,7 +57,7 @@ window.DATOS = {
     condenado:     { nombre: "Condenado",               grupo: "condena" },
     absuelto:      { nombre: "Absuelto",                grupo: "cerrado" },
     archivado:     { nombre: "Archivado / sobreseído",  grupo: "cerrado" },
-    anulado:       { nombre: "Anulado / extinguido",    grupo: "cerrado" }
+    anulado:       { nombre: "Anulado / extinguido / prescrito", grupo: "cerrado" }
   },
 
   casos: [
@@ -399,6 +413,390 @@ window.DATOS = {
         { titulo: "¿Qué es el 'Caso mascarillas' de Almería que salpica a la cúpula del PP en la provincia?", medio: "El Salto", url: "https://www.elsaltodiario.com/almeria/es-caso-mascarillas-almeria-salpica-cupula-del-pp-provincia", tipo: "informe" },
         { titulo: "Dimite el presidente de la Diputación de Almería", medio: "Infobae", url: "https://www.infobae.com/espana/2025/11/21/dimite-el-presidente-de-la-diputacion-de-almeria-javier-aureliano-garcia-investigado-por-mordidas-en-la-compra-de-mascarillas/", tipo: "noticia" }
       ]
+    },
+    /* ===================== Ampliación (búsqueda nov. 2026) ===================== */
+    {
+      id: "brugal_pgou", nombre: "Caso Brugal (Plan General de Alicante)", inicio: 2007, ccaa: ["C. Valenciana"],
+      tribunal: "Audiencia Provincial de Alicante (2021) / Tribunal Supremo",
+      descripcion: "Pieza del caso Brugal sobre el presunto amaño del Plan General de Alicante en favor del empresario Enrique Ortiz. La Audiencia condenó a Ortiz por cohecho y a Díaz Alperi a una multa por cohecho impropio, y absolvió a Sonia Castedo por prescripción. El Supremo confirmó la condena a Ortiz y absolvió también a Alperi por prescripción.",
+      wiki: "Caso Brugal",
+      fuentes: [
+        { titulo: "El TS ratifica las exculpaciones sobre el PGOU de Alicante y las amplía a Alperi por prescripción", medio: "Alicante Plaza", url: "https://alicanteplaza.es/ts-ratifica-exculpaciones-pgou-alicante-amplia-alperi", tipo: "noticia" },
+        { titulo: "Sentencia del caso PGOU: se cumple el pronóstico con Castedo, Alperi y Ortiz", medio: "ESdiario", url: "https://www.esdiario.com/alicante/133475641/Sentencia-del-caso-PGOU-Se-cumple-el-pronostico-con-Castedo-Alperi-y-Ortiz.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "emarsa", nombre: "Caso Emarsa", inicio: 2010, ccaa: ["C. Valenciana"],
+      tribunal: "Audiencia Provincial de Valencia / Tribunal Supremo",
+      descripcion: "Saqueo de la empresa pública de la depuradora de Pinedo (Valencia) con facturas falsas, gastos personales y contrataciones. El Supremo ratificó las penas de prisión de los cabecillas, entre ellos el expresidente Enrique Crespo, condenado a 10 años.",
+      wiki: "Caso Emarsa",
+      fuentes: [
+        { titulo: "El Supremo ratifica las penas de prisión para los cabecillas del caso Emarsa", medio: "Valencia Plaza", url: "https://valenciaplaza.com/supremo-ratifica-penas-emarsa", tipo: "noticia" },
+        { titulo: "Enrique Crespo ingresa en Picassent para cumplir condena por el caso Emarsa", medio: "Valencia Plaza", url: "https://valenciaplaza.com/enrique-crespo-ingresa-en-picassent-para-cumplir-condena-por-el-caso-emarsa", tipo: "noticia" },
+        { titulo: "La Fiscalía consigue una condena histórica en el caso Emarsa", medio: "Valencia Plaza", url: "https://valenciaplaza.com/la-fiscalia-consigue-una-condena-historica-en-el-caso-emarsa", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "ppcv_financiacion", nombre: "Gürtel: financiación ilegal del PP valenciano", inicio: 2009, ccaa: ["C. Valenciana"],
+      tribunal: "Audiencia Nacional (2018), confirmada en apelación",
+      descripcion: "La Audiencia Nacional declaró probado que el PP de la Comunitat Valenciana se financió de forma ilegal en las campañas de 2007 y 2008 mediante facturas falsas de empresas a la trama Gürtel. El ex secretario general Ricardo Costa confesó y fue condenado a 4 años.",
+      wiki: "Caso Gürtel",
+      fuentes: [
+        { titulo: "Costa, condenado a 4 años de prisión y Rambla absuelto, por la financiación ilegal del PPCV", medio: "Valencia Plaza", url: "https://valenciaplaza.com/costa-condenado-a-4-anos-de-prision-y-rambla-absuelto-por-la-financiacion-ilegal-del-ppcv", tipo: "noticia" },
+        { titulo: "Declaran firmes las condenas por la financiación ilegal del PP valenciano", medio: "Valencia Plaza", url: "https://valenciaplaza.com/declaran-firme-la-sentencia-del-dopaje-electoral-del-pp-de-francisco-camps", tipo: "noticia" },
+        { titulo: "La Audiencia Nacional condena a dieciocho acusados por la trama valenciana del caso Gürtel", medio: "CGPJ — Poder Judicial", url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/La-Audiencia-Nacional-condena-a-penas-de-entre-4-meses-y-6-anos-y-9-meses-a-dieciocho-de-los-acusados-por-la-trama-valenciana-del-caso-Gurtel", tipo: "sentencia" }
+      ]
+    },
+    {
+      id: "gurtel_papa", nombre: "Gürtel: visita del Papa a Valencia", inicio: 2009, ccaa: ["C. Valenciana"],
+      tribunal: "Audiencia Nacional (2020)",
+      descripcion: "Amaño de los contratos de la visita de Benedicto XVI a Valencia en 2006 en favor de la trama Gürtel. La Audiencia Nacional condenó a 19 de los 23 acusados en 2020. Juan Cotino, ex presidente de Les Corts, murió de covid-19 en abril de 2020, durante el juicio.",
+      wiki: "Caso Gürtel",
+      fuentes: [
+        { titulo: "El juicio de Gürtel por la visita del Papa se reanuda sin Cotino, fallecido por covid-19", medio: "Valencia Plaza", url: "https://valenciaplaza.com/valenciaplaza/juicio-visita-papa-reanuda-sin-cotino", tipo: "noticia" },
+        { titulo: "Penas de hasta 15 años a la red Gürtel por la visita del Papa", medio: "Deia", url: "https://www.deia.eus/politica/2020/11/25/penas-15-anos-red-guertel-2024707.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "gurtel_boadilla", nombre: "Gürtel: Boadilla del Monte", inicio: 2009, ccaa: ["Madrid"],
+      tribunal: "Audiencia Nacional (2022) / Tribunal Supremo",
+      descripcion: "Rama de Gürtel en Boadilla del Monte: comisiones por adjudicaciones municipales entre 2001 y 2009. El exalcalde Arturo González Panero fue condenado a casi 37 años y el PP, como partícipe a título lucrativo, a devolver 204.198 euros.",
+      wiki: "Caso Gürtel",
+      fuentes: [
+        { titulo: "El Supremo confirma la condena de 36 años de cárcel de 'El Albondiguilla' por la Gürtel", medio: "Onda Vasca", url: "https://www.ondavasca.com/el-supremo-confirma-la-condena-de-36-anos-de-carcel-de-el-albondiguilla-por-la-gurtel/", tipo: "noticia" },
+        { titulo: "Tercera condena al PP por corrupción: tendrá que pagar 204.200 euros por la Gürtel de Boadilla", medio: "Ara", url: "https://es.ara.cat/politica/tercera-condena-pp-corrupcion-tendra-pagar-204-200-euros-gurtel-boadilla_1_4331729.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "alqueria", nombre: "Caso Alquería (Divalterra)", inicio: 2018, ccaa: ["C. Valenciana"],
+      tribunal: "Audiencia Provincial de Valencia (2023) / TSJ Comunitat Valenciana",
+      descripcion: "Investigación sobre la presunta contratación irregular de altos directivos en Divalterra, empresa de la Diputación de Valencia gobernada por PSPV y Compromís. Los 14 acusados, entre ellos el expresidente Jorge Rodríguez, fueron absueltos en 2023, y el TSJ confirmó la absolución.",
+      wiki: "Caso Alquería",
+      fuentes: [
+        { titulo: "El TSJ de la Comunidad Valenciana confirma la absolución de los 14 acusados en el caso Alquería", medio: "CGPJ — Poder Judicial", url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/El-Tribunal-Superior-de-Justicia-de-la-Comunidad-Valenciana-confirma-la-absolucion-de-los-14-acusados-en-el--caso-Alqueria-", tipo: "sentencia" },
+        { titulo: "La Audiencia de Valencia absuelve a Jorge Rodríguez dos días después de las elecciones", medio: "Valencia Plaza", url: "https://valenciaplaza.com/valenciaplaza/la-justicia-absuelve-a-todos-los-acusados-de-alqueria", tipo: "noticia" },
+        { titulo: "Absolen Jorge Rodríguez i els altres tretze acusats en el cas Alqueria", medio: "VilaWeb", url: "https://www.vilaweb.cat/noticies/absolen-jorge-rodriguez-tretze-acusats-alqueria/", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "azud", nombre: "Caso Azud", inicio: 2017, ccaa: ["C. Valenciana"],
+      tribunal: "Juzgado de Instrucción n.º 13 de Valencia (fase intermedia, 2026)",
+      descripcion: "Presunta trama de comisiones en adjudicaciones del Ayuntamiento de Valencia y operaciones urbanísticas, encabezada según la jueza por José María Corbín, cuñado de Rita Barberá. En 2026 se cerró la instrucción con 38 procesados, entre ellos dirigentes del PP y del PSPV-PSOE.",
+      wiki: "Caso Azud",
+      fuentes: [
+        { titulo: "La jueza del caso Azud abre procedimiento abreviado contra 38 investigados", medio: "CGPJ — TSJ C. Valenciana", url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/La-jueza-del--caso-Azud--abre-procedimiento-abreviado-contra-38-investigados-por-presunta-corrupcion-en-contratos-del-Ayuntamiento-de-Valencia-y-operaciones-urbanisticas-en-otras-localidades-de-la-Comunidad-Valenciana", tipo: "informe" },
+        { titulo: "La instrucción del caso Azud llega a su fin tras años de sobreseimientos", medio: "El Español", url: "https://www.elespanol.com/valencia/comunitat/20260731/instruccion-caso-azud-llega-fin-anos-sobreseimientos-empresarios-funcionarios-cargos-psoe/1003744339181_0.html", tipo: "noticia" },
+        { titulo: "Procesan al exvicealcalde de Valencia, al cuñado de Barberá y al exsubdelegado del Gobierno", medio: "Vozpópuli", url: "https://www.vozpopuli.com/espana/comunidad-valenciana/procesan-al-exvicealcalde-de-valencia-al-cunado-de-barbera-y-al-exsubdelegado-del-gobierno-por-el-caso-azud.html", tipo: "noticia" },
+        { titulo: "La jueza envía a prisión a Rafa Rubio, Alfonso Grau y tres empresarios", medio: "Valencia Plaza", url: "https://valenciaplaza.com/jueza-prision-rafa-rubio-alfonso-grau", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "novo_carthago", nombre: "Caso Novo Carthago", inicio: 2010, ccaa: ["Murcia"],
+      tribunal: "Audiencia Provincial de Murcia",
+      descripcion: "Investigación sobre la recalificación de suelo protegido en el Mar Menor para un gran complejo turístico durante el Gobierno de Ramón Luis Valcárcel. La Audiencia absolvió a todos los acusados, entre ellos dos exconsejeros; la sentencia es recurrible ante el Supremo.",
+      wiki: "Novo Carthago",
+      fuentes: [
+        { titulo: "La Audiencia absuelve a todos los acusados en el caso Novo Carthago", medio: "elDiario.es", url: "https://www.eldiario.es/murcia/politica/audiencia-absuelve-acusados-caso-novo-carthago_1_12782915.html", tipo: "noticia" },
+        { titulo: "El juzgado abre juicio oral por el caso Novo Carthago", medio: "CGPJ — Poder Judicial", url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Sala-de-Prensa/Notas-de-prensa/El-juzgado-abre-juicio-oral-por-el-caso-Novo-Carthago", tipo: "informe" }
+      ]
+    },
+    {
+      id: "auditorio_murcia", nombre: "Caso Auditorio (Puerto Lumbreras)", inicio: 2016, ccaa: ["Murcia"],
+      tribunal: "Audiencia Provincial de Murcia (2023) / Tribunal Supremo",
+      descripcion: "Irregularidades en el proyecto de un auditorio en Puerto Lumbreras cuando Pedro Antonio Sánchez era alcalde. Condenado a 3 años de prisión por prevaricación y falsedad; el Supremo confirmó la condena.",
+      wiki: "Pedro Antonio Sánchez",
+      fuentes: [
+        { titulo: "El Tribunal Supremo confirma 3 años de cárcel al expresidente de la Región de Murcia Pedro Antonio Sánchez", medio: "CGPJ — Poder Judicial", url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/El-Tribunal-Supremo-confirma-3-anos-de-carcel-al-expresidente-de-la-Region-de-Murcia-Pedro-Antonio-Sanchez-por-delitos-de-falsedad-y-prevaricacion-en-el--caso-auditorio-", tipo: "sentencia" },
+        { titulo: "El ex presidente de Murcia, condenado a 3 años de prisión por dos delitos de prevaricación", medio: "OKdiario", url: "https://okdiario.com/espana/pedro-antonio-sanchez-ex-presidente-murcia-condenado-3-anos-prision-10548552", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "faffe", nombre: "Caso Faffe", inicio: 2013, ccaa: ["Andalucía"],
+      tribunal: "Audiencia de Sevilla (2023) / TSJ de Andalucía",
+      descripcion: "Gastos con tarjetas de la Fundación Andaluza Fondo de Formación y Empleo en prostíbulos y contrataciones irregulares en la fundación pública de la Junta de Andalucía. Su exdirector Fernando Villén fue condenado a prisión por malversación.",
+      wiki: "Caso Faffe",
+      fuentes: [
+        { titulo: "La justicia condena a seis años de cárcel al exdirector de la Faffe por gastar dinero público en puticlubs", medio: "El Independiente", url: "https://www.elindependiente.com/espana/2023/09/21/la-justicia-condena-a-seis-anos-de-carcel-al-exdirector-de-la-faffe-por-gastar-dinero-publico-en-puticlubs/", tipo: "noticia" },
+        { titulo: "El exdirector de la Faffe, condenado a seis años de cárcel por gastar en prostíbulos dinero público", medio: "Vozpópuli", url: "https://www.vozpopuli.com/espana/andalucia/exdirector-faffe-condenado-seis-anos-carcel-gastar-prostibulos-mas-30-000-euros-dinero-publico.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "invercaria", nombre: "Caso Invercaria", inicio: 2011, ccaa: ["Andalucía"],
+      tribunal: "Audiencia de Sevilla / Tribunal Supremo (varias piezas)",
+      descripcion: "Préstamos y ayudas arbitrarias de Invercaria, la sociedad de capital riesgo de la Junta de Andalucía. Su expresidente acumula varias condenas y en julio de 2026 la Audiencia de Sevilla condenó también al exconsejero Francisco Vallejo.",
+      wiki: "Caso Invercaria",
+      fuentes: [
+        { titulo: "El Supremo eleva a cuatro años y medio una condena al expresidente de Invercaria", medio: "elDiario.es", url: "https://www.eldiario.es/andalucia/supremo-eleva-cuatro-anos-medio-condena-expresidente-empresa-capital-riesgo-andalucia_1_11666920.html", tipo: "noticia" },
+        { titulo: "Más de 3 años de cárcel para el exconsejero andaluz Vallejo y el expresidente de Invercaria", medio: "Última Hora / EFE", url: "https://www.ultimahora.es/noticias/nacional/2026/07/20/2673713/mas-anos-carcel-para-exconsejero-andaluz-vallejo-expresidente-invercaria.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "mercasevilla", nombre: "Caso Mercasevilla (venta de terrenos)", inicio: 2009, ccaa: ["Andalucía"],
+      tribunal: "Juzgado de lo Penal de Sevilla",
+      descripcion: "Pieza del caso Mercasevilla sobre la venta de los terrenos de la empresa municipal. El juzgado absolvió a los diez acusados, entre ellos el ex teniente de alcalde de IU Antonio Rodrigo Torrijos, y la Fiscalía no recurrió.",
+      wiki: "Caso Mercasevilla",
+      fuentes: [
+        { titulo: "La venta de los terrenos, segundo varapalo judicial a las tesis de la jueza Alaya en Mercasevilla", medio: "elDiario.es", url: "https://www.eldiario.es/sevilla/caso-mercasevilla_1_3330825.amp.html", tipo: "noticia" },
+        { titulo: "Caso Mercasevilla (hemeroteca)", medio: "Libertad Digital", url: "https://www.libertaddigital.com/temas/caso-mercasevilla/", tipo: "informe" }
+      ]
+    },
+    {
+      id: "astapa", nombre: "Caso Astapa (Estepona)", inicio: 2007, ccaa: ["Andalucía"],
+      tribunal: "Audiencia Provincial de Málaga (2024)",
+      descripcion: "Presunta trama de corrupción urbanística en el Ayuntamiento de Estepona. Diecisiete años después, la sentencia de 2024 impuso penas menores y absolvió a más de 30 acusados; el exalcalde socialista Antonio Barrientos fue condenado por cohecho a suspensión de empleo y multa.",
+      wiki: "Operación Astapa",
+      fuentes: [
+        { titulo: "El exalcalde socialista de Estepona, condenado a cinco meses de suspensión de empleo por el caso Astapa", medio: "El Debate", url: "https://www.eldebate.com/espana/andalucia/malaga/20241108/exalcalde-socialista-estepona-condenado-cinco-meses-suspension-empleo-caso-astapa_243139.html", tipo: "noticia" },
+        { titulo: "La Fiscalía reduce la petición de cárcel para el exalcalde de Estepona", medio: "Qué!", url: "https://www.que.es/2024/06/11/fiscalia-reduce-carcel-caso-astapa/", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "juan_guerra", nombre: "Caso Juan Guerra", inicio: 1990, ccaa: ["Andalucía", "Nacional"],
+      tribunal: "Tribunal Supremo (años 90)",
+      descripcion: "Juan Guerra, hermano del vicepresidente Alfonso Guerra, usaba un despacho oficial en la Delegación del Gobierno en Sevilla. Fue procesado en varias causas y finalmente condenado por un delito fiscal. El escándalo forzó la dimisión de Alfonso Guerra en 1991.",
+      wiki: "Caso Juan Guerra",
+      fuentes: [
+        { titulo: "Juan Guerra se reivindica inocente respecto a la 'operación de caza'", medio: "elDiario.es", url: "https://www.eldiario.es/andalucia/juan-guerra-reivindica-inocente-respecto-operacion-caza-sintio-victima-30-anos_1_8726588.html", tipo: "noticia" },
+        { titulo: "De Juan Guerra a Koldo García: el PSOE reviu el malson de la corrupció", medio: "Nació Digital", url: "https://naciodigital.cat/politica/de-juan-guerra-a-koldo-garcia-el-psoe-reviu-el-malson-de-la-corrupcio.html", tipo: "informe" }
+      ]
+    },
+    {
+      id: "dos_hermanas", nombre: "Contratación de Paco Salazar en Dos Hermanas", inicio: 2025, ccaa: ["Andalucía"],
+      tribunal: "Juzgado de Dos Hermanas (archivo, junio de 2026)",
+      descripcion: "Querella de Vox por la contratación en 2012 del dirigente socialista Paco Salazar en el Ayuntamiento de Dos Hermanas. La jueza descartó malversación y tráfico de influencias y consideró prescrita la prevaricación, aunque reconoció irregularidades en la contratación.",
+      wiki: "Dos Hermanas",
+      fuentes: [
+        { titulo: "Archivada la querella de Vox contra el exalcalde de Dos Hermanas por la contratación de Salazar", medio: "Deia", url: "https://www.deia.eus/politica/2026/06/26/archivada-querella-vox-exalcalde-hermanas-paco-salazar-11252241.html", tipo: "noticia" },
+        { titulo: "Paco Salazar y Francisco Toscano se libran de una condena por prevaricación: el delito ha prescrito", medio: "ESdiario", url: "https://www.esdiario.com/andalucia/260626/191669/socialistas-paco-salazar-francisco-toscano-libran-condena-prevaricacion-delito-prescrito.html", tipo: "noticia" },
+        { titulo: "La UCO acude al Ayuntamiento de Dos Hermanas por el contrato a un exasesor de Sánchez", medio: "The Objective", url: "https://theobjective.com/espana/tribunales/2025-11-26/uco-ayuntamiento-sevillano-exasesor-sanchez/", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "gil_camisetas", nombre: "Caso de las camisetas (Marbella)", inicio: 1999, ccaa: ["Andalucía"],
+      tribunal: "Audiencia Provincial de Málaga (2000) / Tribunal Supremo (2002)",
+      descripcion: "Desvío de unos 450 millones de pesetas del Ayuntamiento de Marbella al Atlético de Madrid mediante publicidad en camisetas. Jesús Gil fue condenado a inhabilitación por prevaricación, lo que le obligó a dejar la alcaldía en 2002. Murió en 2004.",
+      wiki: "Jesús Gil",
+      fuentes: [
+        { titulo: "El presidente del tribunal de Malaya se abstuvo en 2000 de juzgar a Jesús Gil y Julián Muñoz", medio: "elDiario.es", url: "https://www.eldiario.es/politica/malaya-jesus-gil-julian-munoz_1_5837336.html", tipo: "noticia" },
+        { titulo: "Marbella, el patrocinio más oscuro del fútbol español", medio: "Merca2", url: "https://www.merca2.es/2022/01/29/marbella-patrocinio-futbol-866550/", tipo: "informe" }
+      ]
+    },
+    {
+      id: "pacheco_asesores", nombre: "Caso asesores (Jerez)", inicio: 2005, ccaa: ["Andalucía"],
+      tribunal: "Audiencia de Cádiz / Tribunal Supremo (2014)",
+      descripcion: "Pedro Pacheco, exalcalde de Jerez, colocó como asesores en empresas municipales a dos compañeros de partido sin contraprestación. El Supremo elevó la pena a 5 años y medio por prevaricación, malversación y falsedad. Tiene otras condenas (estación de autobuses, Casa del Rocío) y ha pedido el indulto.",
+      wiki: "Pedro Pacheco",
+      fuentes: [
+        { titulo: "El Tribunal Supremo condena a 5 años y medio de prisión a Pedro Pacheco", medio: "CGPJ — Poder Judicial", url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/El-Tribunal-Supremo-condena-a-5-anos-y-medio-de-prision-a-Pedro-Pacheco--ex-alcalde-de-Jerez-de-la-Frontera", tipo: "sentencia" },
+        { titulo: "El Supremo agrava la pena por el caso asesores y condena a Pacheco a cinco años y seis meses", medio: "Diario Bahía de Cádiz", url: "https://diariobahiadecadiz.com/jerez/el-supremo-agrava-la-pena-inicial-por-el-caso-asesores-y-condena-pacheco-cinco-anos-y-seis-meses-de-carcel", tipo: "noticia" },
+        { titulo: "Pedro Pacheco: cinco años esperando el indulto", medio: "elDiario.es", url: "https://www.eldiario.es/andalucia/cadiz/pedro-pacheco-cinco-anos-esperando-indulto-ahora-justicia-no-cachondeo-sistema-corrupto_1_13417930.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "melilla_votos", nombre: "Compra de votos por correo en Melilla (2008)", inicio: 2008, ccaa: ["Melilla"],
+      tribunal: "Audiencia Provincial de Málaga (2018) / Tribunal Supremo (2021)",
+      descripcion: "Compra de votos por correo en las elecciones generales de 2008 a cambio de empleos en planes públicos, organizada según la sentencia por Mustafa Aberchán (CPM) y Dionisio Muñoz (PSOE). Ambos fueron condenados a 2 años de prisión y 30 meses de inhabilitación.",
+      wiki: "Coalición por Melilla",
+      fuentes: [
+        { titulo: "El PSOE recurrirá al Constitucional la condena a su exlíder en Melilla", medio: "Moncloa.com", url: "https://www.moncloa.com/2021/02/18/psoe-recurrira-condena-exlider-melilla-626895/", tipo: "noticia" },
+        { titulo: "Imbroda sitúa la condena a Aberchán como lo más relevante de 2021 en Melilla", medio: "El Faro de Melilla", url: "https://elfarodemelilla.es/imbroda-situa-la-condena-a-aberchan-y-la-mala-gestion-de-la-pandemia-como-lo-mas-relevante-de-2021-en-melilla", tipo: "noticia" },
+        { titulo: "El líder de Coalición por Melilla no se podrá presentar a las municipales por comprar votos", medio: "OKdiario", url: "https://okdiario.com/andalucia/lider-coalicion-melilla-no-podra-presentar-municipales-comprar-votos-10949862", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "pallerols", nombre: "Caso Pallerols", inicio: 2000, ccaa: ["Cataluña"],
+      tribunal: "Audiencia Provincial de Barcelona (2013, por conformidad)",
+      descripcion: "Desvío de fondos públicos para cursos de formación hacia la financiación de Unió Democràtica de Catalunya. En 2013 los acusados aceptaron condenas y UDC pagó unos 388.000 euros como partícipe a título lucrativo.",
+      wiki: "Caso Pallerols",
+      fuentes: [
+        { titulo: "Caso Pallerols: cumplir las condenas, clave para evitar la corrupción", medio: "Legal Today", url: "https://www.legaltoday.com/practica-juridica/derecho-penal/penal/caso-pallerols-cumplir-las-condenas-clave-para-evitar-la-corrupcion-2014-05-28/", tipo: "informe" },
+        { titulo: "Duran i Lleida se niega a dimitir por el caso Pallerols", medio: "La Marea", url: "https://www.lamarea.com/2013/01/09/duran-i-lleida-se-niega-a-dimitir-por-el-caso-pallerols", tipo: "noticia" },
+        { titulo: "Lo que perdió en millones de euros el caso Pallerols", medio: "Público", url: "https://www.publico.es/espana/perdio-millones-euros-caso-pallerols.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "mercurio", nombre: "Caso Mercurio (Sabadell)", inicio: 2014, ccaa: ["Cataluña"],
+      tribunal: "Audiencia de Barcelona / TSJ de Cataluña / Tribunal Supremo",
+      descripcion: "Macrocausa sobre tráfico de influencias y corrupción en el entorno del exalcalde de Sabadell Manuel Bustos. Entre otras, el Supremo confirmó una condena de 3 años de prisión por ordenar retirar multas de tráfico a familiares.",
+      wiki: "Manuel Bustos",
+      fuentes: [
+        { titulo: "Manuel Bustos tendrá que entrar en prisión antes de un mes por el caso Mercurio", medio: "Ara", url: "https://es.ara.cat/politica/manuel-bustos-tendra-entrar-prision-mes-caso-mercurio_1_4214099.html", tipo: "noticia" },
+        { titulo: "El Suprem obre la porta a l'ingrés de Manuel Bustos a la presó", medio: "3Cat", url: "https://www.3cat.cat/3catinfo/el-suprem-obre-la-porta-a-lingres-a-preso-de-manuel-bustos-exalcalde-de-sabadell/noticia/3083752/", tipo: "noticia" },
+        { titulo: "Vuit anys del cas Mercuri, el laberint judicial que va posar fi a l'era Bustos", medio: "Nació Digital", url: "https://naciodigital.cat/sabadell/vuit-anys-del-cas-mercuri-el-laberint-judicial-que-va-posar-fi-a-lera-bustos-a-sabadell_1829445_102.html", tipo: "informe" }
+      ]
+    },
+    {
+      id: "tres_por_ciento", nombre: "Caso del 3% (CDC / PDeCAT)", inicio: 2015, ccaa: ["Cataluña", "Nacional"],
+      tribunal: "Audiencia Nacional (pendiente de juicio)",
+      descripcion: "Presunto cobro de comisiones a constructoras a cambio de obra pública para financiar Convergència. En 2022 el juez envió a juicio a CDC, al PDeCAT y a sus extesoreros Germà Gordó, Daniel Osàcar y Andreu Viloca; la Fiscalía pide hasta 21 años.",
+      wiki: "Caso del 3%",
+      fuentes: [
+        { titulo: "La Audiencia Nacional respalda juzgar a Convergència y al PDeCAT por el 3%", medio: "elDiario.es", url: "https://www.eldiario.es/catalunya/audiencia-nacional-respalda-juzgar-cdc-pdecat-exgerente-3_1_7362914.html", tipo: "noticia" },
+        { titulo: "La Audiencia Nacional envía a juicio a los acusados por el caso del 3%", medio: "Segre", url: "https://www.segre.com/es/nacional-internacional/221109/la-audiencia-nacional-envia-juicio-los-acusados-por-caso-del_168936.html", tipo: "noticia" },
+        { titulo: "Tres extesoreros de CDC y del PDeCAT, a un paso de juicio por el caso 3%", medio: "El Nacional", url: "https://www.elnacional.cat/es/politica/tres-extesoreros-cdc-pdecat-juicio-caso-3-per-cent_913635_102.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "sitges", nombre: "Caso subvenciones de Sitges", inicio: 2023, ccaa: ["Cataluña"],
+      tribunal: "Juzgado de Instrucción n.º 8 de Vilanova i la Geltrú",
+      descripcion: "Investigación sobre la adjudicación de subvenciones y contratos menores del Ayuntamiento de Sitges (2017-2022). La alcaldesa fue detenida en 2023 y quedó en libertad; en 2026 declaró de nuevo como investigada por la concesión de una licencia a una empresa de su hijo.",
+      wiki: "Sitges",
+      fuentes: [
+        { titulo: "En libertad la alcaldesa de ERC de Sitges", medio: "The Objective", url: "https://theobjective.com/espana/tribunales/2023-06-21/libertad-alcaldesa-erc-sitges/", tipo: "noticia" },
+        { titulo: "La alcaldesa de Sitges niega ante la jueza haber favorecido a su hijo", medio: "Ara (en inglés)", url: "https://en.ara.cat/politics/the-mayor-of-sitges-denies-to-the-judge-having-favored-her-son-for-the-concession-of-market-stall_25_5727110.html", tipo: "noticia" },
+        { titulo: "Operativo anticorrupción en Sitges con 11 detenidos", medio: "Ara", url: "https://es.ara.cat/politica/operativo-anticorrupcion-sitges-11-detenidos-incluida-alcaldesa_1_4736889.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "la_muela", nombre: "Caso La Muela", inicio: 2009, ccaa: ["Aragón"],
+      tribunal: "Audiencia Provincial de Zaragoza / Tribunal Supremo",
+      descripcion: "Trama de corrupción urbanística en La Muela (Zaragoza). Tras repetirse el juicio, el Supremo condenó a la exalcaldesa María Victoria Pinilla (PAR) a 11 años y 4 meses por cohecho y malversación.",
+      wiki: "Caso La Muela",
+      fuentes: [
+        { titulo: "El Supremo condena a 11 años de prisión a la exalcaldesa de La Muela", medio: "Economist & Jurist", url: "https://www.economistjurist.es/actualidad-juridica/jurisprudencia/el-supremo-condena-a-11-anos-de-prision-a-la-exalcaldesa-de-la-muela", tipo: "noticia" },
+        { titulo: "La exalcaldesa de La Muela, condenada a 16 años por corrupción", medio: "Público", url: "https://www.publico.es/politica/exalcaldesa-muela-condenada-16-anos-corrupcion.html", tipo: "noticia" },
+        { titulo: "El Tribunal Supremo anula la condena a la exalcaldesa de La Muela y ordena un nuevo juicio", medio: "CGPJ — TSJ Aragón", url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Tribunales-Superiores-de-Justicia/TSJ-Aragon/Oficina-de-Comunicacion/Archivo-de-notas-de-prensa/El-Tribunal-Supremo-anula-la-condena-a-la-exalcaldesa-de-La-Muela-por-vulneracion-del-derecho-de-defensa-y-ordena-celebrar-un-nuevo-juicio", tipo: "sentencia" }
+      ]
+    },
+    {
+      id: "hormaechea", nombre: "Caso Hormaechea", inicio: 1991, ccaa: ["Cantabria"],
+      tribunal: "TSJ de Cantabria (1994)",
+      descripcion: "El presidente de Cantabria Juan Hormaechea fue condenado por malversación y prevaricación en la gestión del Gobierno regional. El Gobierno de Felipe González le indultó la pena de prisión en 1995. Fundó la UPCA en 1991 tras romper con el PP.",
+      wiki: "Juan Hormaechea", fuentes: []
+    },
+    {
+      id: "union_lanzarote", nombre: "Caso Unión (Lanzarote)", inicio: 2009, ccaa: ["Canarias"],
+      tribunal: "Audiencia Provincial de Las Palmas (2019) / Tribunal Supremo",
+      descripcion: "Gran causa de corrupción en instituciones de Lanzarote, con cargos de varios partidos y numerosas piezas. El Supremo confirmó 7 años y 5 meses de prisión para Dimas Martín, fundador del Partido de Independientes de Lanzarote, por asociación ilícita, cohecho, malversación, fraude y prevaricación.",
+      wiki: "Caso Unión",
+      fuentes: [
+        { titulo: "El Tribunal Supremo confirma la pena de 7 años y 5 meses de prisión al fundador del PIL", medio: "CGPJ — Poder Judicial", url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Tribunal-Supremo/Noticias-Judiciales/El-Tribunal-Supremo-confirma-la-pena-de-7-anos-y-5-meses-de-prision-al-fundador-del-Partido-de-Independientes-de-Lanzarote-por-asociacion-ilicita--cohecho--malversacion--fraude-y-prevaricacion", tipo: "sentencia" },
+        { titulo: "Confirman la prisión de 7 años y 5 meses para Dimas Martín", medio: "RTVC", url: "https://rtvc.es/supremo-confirma-7-anos-5-meses-carcel-dimas-martin/", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "eolico_canarias", nombre: "Caso Eólico (Canarias)", inicio: 2006, ccaa: ["Canarias"],
+      tribunal: "Audiencia Provincial de Las Palmas",
+      descripcion: "Amaño del concurso eólico del Gobierno de Canarias (2003-2005, Gobierno CC-PP) a cambio de sobornos. El exdirector general de Industria fue condenado a 2 años y 4 meses; la querella contra el exconsejero Luis Soria (PP) fue archivada.",
+      wiki: "Caso Eólico",
+      fuentes: [
+        { titulo: "La Audiencia de Las Palmas condena a dos años y cuatro meses al principal imputado en el caso Eólico", medio: "CGPJ — Poder Judicial", url: "https://www.poderjudicial.es/cgpj/gl/Poder-Xudicial/Novidades/La-Audiencia-de-Las-Palmas-condena-a-dos-anos-y-cuatro-meses-de-carcel-al-principal-imputado-en-el--caso-eolico--", tipo: "sentencia" },
+        { titulo: "Guía para entender el caso Eólico", medio: "elDiario.es / Canarias Ahora", url: "https://www.eldiario.es/canariasahora/tribunales/guia-caso-eolico-jose-manuel-soria-esquivel-celso-perdomo-canarias_1_2076824.html", tipo: "informe" },
+        { titulo: "El TSJC desestima el recurso de la Fiscalía y mantiene el archivo de la querella contra Soria", medio: "La Voz de Lanzarote", url: "https://www.lavozdelanzarote.com/en/news/politics/the-tsjc-dismisses-the-prosecutor-s-appeal-and-upholds-the-dismissal-of-the-complaint-against-soria-for-the-eolico-case_54285_102.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "urralburu", nombre: "Caso Urralburu (comisiones en Navarra)", inicio: 1996, ccaa: ["Navarra"],
+      tribunal: "Audiencia de Navarra / Tribunal Supremo",
+      descripcion: "Cobro de comisiones por obra pública en Navarra durante los gobiernos socialistas. El expresidente Gabriel Urralburu y el exconsejero Antonio Aragón fueron condenados por cohecho y delito fiscal. Javier Otano dimitió en 1996 por una cuenta en Suiza; su causa acabó prescrita.",
+      wiki: "Gabriel Urralburu",
+      fuentes: [
+        { titulo: "Tramas navarras: de Urralburu a Cerdán", medio: "Noticias de Navarra", url: "https://www.noticiasdenavarra.com/politica/2025/06/12/tramas-navarras-urralburu-cerdan-9754699.html", tipo: "informe" },
+        { titulo: "Socialists get jail for kickbacks", medio: "The Irish Times", url: "https://www.irishtimes.com/news/socialists-get-jail-for-kickbacks-1.190945", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "can_dietas", nombre: "Dietas de Caja Navarra", inicio: 2012, ccaa: ["Navarra"],
+      tribunal: "Tribunal Supremo / Juzgado de Pamplona (archivo, 2013)",
+      descripcion: "Investigación sobre las dietas cobradas por dirigentes de UPN en órganos de Caja Navarra por reuniones múltiples. El Supremo rechazó imputar a la presidenta Yolanda Barcina y la jueza archivó toda la causa en 2013. Los implicados devolvieron lo cobrado.",
+      wiki: "Caja Navarra",
+      fuentes: [
+        { titulo: "El Supremo archiva la causa contra Barcina por las dietas de la CAN", medio: "Orain", url: "https://orain.eus/es/politica/2013/07/24/supremo-archiva-barcina-dietas--el-supremo-no-imputara-barcina/", tipo: "noticia" },
+        { titulo: "La juez Benito archiva el caso Caja Navarra", medio: "Orain", url: "https://orain.eus/es/politica/2013/10/03/caso-caja-navarra--la-juez-benito-archiva-toda-causa/", tipo: "noticia" },
+        { titulo: "El ex presidente navarro Sanz, imputado por las dietas en Caja Navarra", medio: "Legal Today / Reuters", url: "https://www.legaltoday.com/rincon-de-reuters/el-ex-presidente-navarro-sanz-imputado-por-las-dietas-en-caja-navarra-2013-04-02/", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "pokemon", nombre: "Operación Pokémon", inicio: 2012, ccaa: ["Galicia"],
+      tribunal: "Juzgado de Lugo y Audiencia Provincial (varias piezas)",
+      descripcion: "Macrocausa por presuntos sobornos de empresas a cargos públicos de ayuntamientos gallegos de varios partidos. La pieza original se cerró en 2024 con condenas inferiores a 3 años por acuerdo con la Fiscalía; la pieza que afectaba al exalcalde de Ourense Francisco Rodríguez se archivó.",
+      wiki: "Operación Pokémon",
+      fuentes: [
+        { titulo: "Archivada la pieza de la 'Pokémon' contra el candidato del PSOE a la Alcaldía de Ourense", medio: "elDiario.es", url: "https://www.eldiario.es/galicia/archivada-pieza-pokemon-candidato-psoe-alcaldia-ourense_1_10111044.html", tipo: "noticia" },
+        { titulo: "La pieza original de la Operación Pokémon se cierra con penas inferiores a tres años", medio: "El Debate", url: "https://www.eldebate.com/espana/galicia/20240624/pieza-original-operacion-pokemon-cierra-penas-inferiores-tres-anos-11-acusados_207858.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "jacome", nombre: "Caso Auria TV (alcalde de Ourense)", inicio: 2024, ccaa: ["Galicia"],
+      tribunal: "Tribunal de Instancia de Ourense",
+      descripcion: "Investigación al alcalde de Ourense, Gonzalo Pérez Jácome, por compatibilizar el cargo con su televisión privada sin autorización del Pleno. Imputado por prevaricación en abril de 2026; la Fiscalía descartó malversación y falsedad. Hay recursos pendientes.",
+      wiki: "Gonzalo Pérez Jácome",
+      fuentes: [
+        { titulo: "El alcalde de Ourense, imputado por prevaricación al compatibilizar el cargo con su televisión privada", medio: "El Salto", url: "https://www.elsaltodiario.com/galicia/alcalde-ourense-imputado-prevaricacion-al-compatibilizar-cargo-television-privada-aut", tipo: "noticia" },
+        { titulo: "La Fiscalía acusará a Jácome por prevaricación, no por malversación ni falsedad", medio: "El Español", url: "https://www.elespanol.com/treintayseis/actualidad/provincia-de-ourense/20260506/fiscalia-acusara-jacome-prevaricacion-no-malversacion-falsedad-documental/1003744236093_0.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "over_baleares", nombre: "Caso Over (Palma Arena)", inicio: 2010, ccaa: ["Baleares"],
+      tribunal: "Audiencia Provincial de Baleares (2019) / Tribunal Supremo",
+      descripcion: "Pieza del Palma Arena sobre el desvío de fondos públicos a la campaña del PP balear de 2007 a través de la empresa Over Marketing. El ex secretario general del PP balear José María Rodríguez fue condenado a 3 años y medio; Jaume Matas confesó la financiación irregular.",
+      wiki: "Caso Palma Arena",
+      fuentes: [
+        { titulo: "El Supremo confirma los 3,5 años de cárcel a José María Rodríguez", medio: "Mallorcadiario", url: "https://www.mallorcadiario.com/rodriguez-supremo-confirmacion-caso-over-carcel", tipo: "noticia" },
+        { titulo: "El ex dirigente del PP balear José María Rodríguez, condenado a más de tres años", medio: "OKdiario", url: "https://okdiario.com/espana/ex-dirigente-del-pp-balear-jose-maria-rodriguez-condenado-mas-tres-anos-prevaricacion-4250624", tipo: "noticia" },
+        { titulo: "Matas confiesa en el juicio que se financió el PP balear de forma irregular", medio: "Periódico de Ibiza", url: "https://www.periodicodeibiza.es/noticias/baleares/2018/10/01/1028917/matas-confiesa-juicio-financio-balear-forma-irregular.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "soller", nombre: "Caso del túnel de Sóller", inicio: 1995, ccaa: ["Baleares"],
+      tribunal: "TSJ de Baleares (1997)",
+      descripcion: "La concesión del túnel de Sóller al empresario Antoni Cuart, que pagó 50 millones de pesetas a una fundación presidida por Gabriel Cañellas. El tribunal consideró probado el cohecho, pero el delito estaba prescrito y Cañellas, que dimitió como presidente balear, quedó absuelto.",
+      wiki: "Gabriel Cañellas",
+      fuentes: [
+        { titulo: "El TSJB consideró probado el soborno de Antoni Cuart", medio: "Mallorcadiario", url: "https://www.mallorcadiario.com/canellas-mantiene-su-cuadro-en-el-consolat-pese-al-delito-del-tunel", tipo: "noticia" },
+        { titulo: "Del túnel de Sóller al cas Andratx", medio: "Enciclopèdia.cat", url: "https://www.enciclopedia.cat/historia.-politica-societat-i-cultura-dels-paisos-catalans/del-tunel-de-soller-al-cas-andratx", tipo: "informe" }
+      ]
+    },
+    {
+      id: "perla_negra", nombre: "Caso Perla Negra", inicio: 2016, ccaa: ["Castilla y León"],
+      tribunal: "Audiencia Provincial de Valladolid — recurrible en casación",
+      descripcion: "Compra con sobreprecio por la Junta de Castilla y León del edificio Perla Negra, en el Parque Tecnológico de Boecillo. El exviceconsejero Rafael Delgado fue condenado a 2 años y medio por prevaricación y malversación.",
+      wiki: "Rafael Delgado",
+      fuentes: [
+        { titulo: "La corrupción de la Perla Negra se zanja con dos años y medio de prisión", medio: "Diario de León", url: "https://www.diariodeleon.es/castilla-y-leon/250108/1763649/corrupcion-perla-negra-zanja-dos-anos-medio-prision.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "trama_eolica", nombre: "Trama eólica de Castilla y León", inicio: 2016, ccaa: ["Castilla y León"],
+      tribunal: "Audiencia Provincial de Valladolid (visto para sentencia en enero de 2026)",
+      descripcion: "Presunto cobro de comisiones y bloqueo de parques eólicos desde la Consejería de Economía de la Junta, con unos 80 millones en presuntas mordidas. La Fiscalía pide 42 años para Rafael Delgado; el juicio quedó visto para sentencia el 22 de enero de 2026.",
+      wiki: "Trama eólica de Castilla y León",
+      fuentes: [
+        { titulo: "Termina el juicio por la trama eólica de Castilla y León", medio: "elDiario.es", url: "https://www.eldiario.es/castilla-y-leon/tribunales/once-procesados-cuentas-monaco-empresarios-coaccionados-termina-juicio-trama-eolica-castilla-leon_1_12918228.amp.html", tipo: "noticia" },
+        { titulo: "Rafael Delgado, cabecilla del mayor caso de corrupción de Castilla y León: piden 42 años", medio: "El Debate", url: "https://www.eldebate.com/espana/castilla-y-leon/20250914/rafael-delgado-cabecilla-mayor-caso-corrupcion-castilla-leon-piden-42-anos-carcel_334050.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "monago", nombre: "Viajes de Monago a Canarias", inicio: 2014, ccaa: ["Extremadura", "Nacional"],
+      tribunal: "Tribunal Supremo (archivo)",
+      descripcion: "Querella por presunta malversación por los viajes a Canarias que José Antonio Monago hizo como senador entre 2009 y 2010 con cargo al Senado. El Supremo la archivó, aunque pidió diferenciar mejor los viajes oficiales de los privados.",
+      wiki: "José Antonio Monago",
+      fuentes: [
+        { titulo: "El Tribunal Supremo archiva la querella contra José Antonio Monago por sus viajes a Tenerife", medio: "CGPJ — Poder Judicial", url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Sala-de-Prensa/Archivo-de-notas-de-prensa/El-Tribunal-Supremo-archiva-la-querella-contra-Jose-Antonio-Monago-por-sus-viajes-a-Tenerife", tipo: "sentencia" },
+        { titulo: "Monago devolverá «hasta el último céntimo» de los viajes a Canarias", medio: "Libertad Digital", url: "https://www.libertaddigital.com/espana/2014-11-08/monago-devolvera-hasta-el-ultimo-centimo-de-los-viajes-a-canarias-1276532917/", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "plus_ultra", nombre: "Caso Plus Ultra", inicio: 2025, ccaa: ["Nacional", "Madrid"],
+      tribunal: "Audiencia Nacional (juez José Luis Calama)",
+      descripcion: "Investigación sobre el rescate de 53 millones a la aerolínea Plus Ultra en 2021 con fondos para la pandemia. En mayo de 2026 el juez imputó al expresidente José Luis Rodríguez Zapatero por tráfico de influencias, organización criminal, blanqueo y falsedad; hay una pieza separada por joyas halladas en su despacho. Zapatero niega haber cobrado o influido.",
+      wiki: "Plus Ultra Líneas Aéreas",
+      fuentes: [
+        { titulo: "El juez imputa a José Luis Rodríguez Zapatero en el caso Plus Ultra", medio: "Orain", url: "https://orain.eus/es/politica/2026/05/19/el-juez-imputa-jose-luis-rodriguez-zapatero-en-el-caso-plus-ultra-presunto-blanqueo-capitales/", tipo: "noticia" },
+        { titulo: "El juez rechaza anular la causa Plus Ultra contra Rodríguez Zapatero", medio: "Euronews", url: "https://es.euronews.com/2026/09/04/juez-rechaza-anular-causa-plus-ultra-expresidente-rodriguez-zapatero", tipo: "noticia" },
+        { titulo: "Nuevo frente judicial para Zapatero: el juez investigará si intentó influir en Escrivá", medio: "Artículo 14", url: "https://www.articulo14.es/politica/nuevo-frente-judicial-para-zapatero-el-juez-investigara-si-intento-influir-en-escriva-20261019.html", tipo: "noticia" }
+      ]
+    },
+    {
+      id: "serrano_prestamo", nombre: "Préstamo público a una planta de pellets (Francisco Serrano)", inicio: 2020, ccaa: ["Andalucía"],
+      tribunal: "Audiencia de Sevilla (juicio fijado para marzo de 2027)",
+      descripcion: "Acusación por fraude de subvenciones o estafa por un préstamo de unos 2,5 millones del Ministerio de Industria concedido en 2016 a una empresa de Francisco Serrano para una planta en Niebla (Huelva). Los hechos son anteriores a su etapa en Vox; dejó el partido en 2020 tras la querella de la Fiscalía.",
+      wiki: "Francisco Serrano Castro",
+      fuentes: [
+        { titulo: "Abren juicio con fianza de 3,3 millones al exportavoz de Vox Francisco Serrano", medio: "Valencia Plaza", url: "https://valenciaplaza.com/valenciaplaza/abren-juicio-con-fianza-de-3-3-millones-al-exportavoz-de-vox-francisco-serrano-por-fraude-de-ayudas-publicas", tipo: "noticia" },
+        { titulo: "Aplazado a 2027 el juicio a Serrano por fraude", medio: "Demócrata", url: "https://www.democrata.es/tribunales/el-juicio-al-ex-portavoz-de-vox-en-andalucia-francisco-serrano-por-presunto-fraude-se-pospone-a-marzo-de-2027/", tipo: "noticia" },
+        { titulo: "Francisco Serrano dimite tras la querella de la Fiscalía", medio: "The Objective", url: "https://theobjective.com/espana/2020-07-01/francisco-serrano-lider-de-vox-en-andalucia-dimite-tras-la-querella-de-la-fiscalia-por-fraude-de-subvenciones/", tipo: "noticia" }
+      ]
     }
   ],
 
@@ -621,7 +1019,10 @@ window.DATOS = {
 
     { id: "osacar", nombre: "Daniel Osàcar", cargo: "Extesorero de CDC", ccaa: "Cataluña", partidoActual: "NINGUNO",
       historial: [{ partido: "CDC" }],
-      casos: [{ caso: "palau", partido: "CDC", estado: "condenado", firme: true, anio: 2020, detalle: "Condenado a prisión por la financiación ilegal de CDC a través del Palau." }] },
+      casos: [
+        { caso: "palau", partido: "CDC", estado: "condenado", firme: true, anio: 2020, detalle: "Condenado a prisión por la financiación ilegal de CDC a través del Palau." },
+        { caso: "tres_por_ciento", partido: "CDC", estado: "juicio", firme: null, anio: 2022, detalle: "Enviado a juicio en 2022; la Fiscalía le pide una pena reducida por colaborar." }
+      ] },
 
     { id: "alavedra", nombre: "Macià Alavedra", cargo: "Exconseller de Economía de la Generalitat", ccaa: "Cataluña", partidoActual: "NINGUNO",
       historial: [{ partido: "CDC" }],
@@ -674,6 +1075,213 @@ window.DATOS = {
 
     { id: "david_sanchez", nombre: "David Sánchez Pérez-Castejón", cargo: "Excoordinador de conservatorios de la Diputación de Badajoz (no es cargo electo)", ccaa: "Extremadura", partidoActual: "NINGUNO",
       historial: [],
-      casos: [{ caso: "hermano", partido: "NINGUNO", estado: "condenado", firme: false, anio: 2026, detalle: "Condenado en julio de 2026 a 9 años de inhabilitación por prevaricación; su defensa recurre." }] }
+      casos: [{ caso: "hermano", partido: "NINGUNO", estado: "condenado", firme: false, anio: 2026, detalle: "Condenado en julio de 2026 a 9 años de inhabilitación por prevaricación; su defensa recurre." }] },
+
+    /* ===================== Ampliación (búsqueda nov. 2026) ===================== */
+    /* ---- PP ---- */
+    { id: "diaz_alperi", nombre: "Luis Díaz Alperi", cargo: "Exalcalde de Alicante", ccaa: "C. Valenciana", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "brugal_pgou", partido: "PP", estado: "absuelto", firme: true, anio: 2022, detalle: "Condenado a multa por cohecho impropio en 2021; el Supremo le absolvió por prescripción." }] },
+
+    { id: "castedo", nombre: "Sonia Castedo", cargo: "Exalcaldesa de Alicante", ccaa: "C. Valenciana", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "brugal_pgou", partido: "PP", estado: "absuelto", firme: true, anio: 2021, detalle: "Absuelta: la Audiencia vio cohecho por un regalo, pero el delito había prescrito." }] },
+
+    { id: "enrique_crespo", nombre: "Enrique Crespo", cargo: "Exalcalde de Manises y expresidente de Emarsa", ccaa: "C. Valenciana", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "emarsa", partido: "PP", estado: "condenado", firme: true, anio: 2019, detalle: "Condenado a 10 años de prisión, ratificados por el Supremo. Tiene otra condena por fraude de IVA." }] },
+
+    { id: "ricardo_costa", nombre: "Ricardo Costa", cargo: "Ex secretario general del PP de la Comunitat Valenciana", ccaa: "C. Valenciana", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "ppcv_financiacion", partido: "PP", estado: "condenado", firme: true, anio: 2018, detalle: "Confesó la financiación ilegal y fue condenado a 4 años de prisión con atenuantes." }] },
+
+    { id: "cotino", nombre: "Juan Cotino", cargo: "Ex presidente de Les Corts y ex director general de la Policía", ccaa: "C. Valenciana", partidoActual: "PP",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "gurtel_papa", partido: "PP", estado: "anulado", firme: null, anio: 2020, detalle: "Acusado en el juicio de la visita del Papa; murió de covid-19 en abril de 2020, durante el juicio, lo que extinguió su responsabilidad penal." }] },
+
+    { id: "gonzalez_panero", nombre: "Arturo González Panero", cargo: "Exalcalde de Boadilla del Monte", ccaa: "Madrid", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "gurtel_boadilla", partido: "PP", estado: "condenado", firme: true, anio: 2022, detalle: "Condenado a 36 años y 11 meses por 18 delitos; el Supremo confirmó la condena. En prisión desde 2022." }] },
+
+    { id: "grau", nombre: "Alfonso Grau", cargo: "Ex vicealcalde de Valencia", ccaa: "C. Valenciana", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [
+        { caso: "azud", partido: "PP", estado: "juicio", firme: null, anio: 2026, detalle: "Procesado en 2026; según la jueza habría obtenido más de dos millones en comisiones. Estuvo seis meses en prisión provisional." },
+        { caso: "taula", partido: "PP", estado: "condenado", firme: false, anio: 2024, detalle: "Condenado en primera instancia en una pieza del caso Taula." }
+      ] },
+
+    { id: "cerda", nombre: "Antonio Cerdá", cargo: "Exconsejero de Medio Ambiente de la Región de Murcia", ccaa: "Murcia", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "novo_carthago", partido: "PP", estado: "absuelto", firme: null, anio: 2025, detalle: "Absuelto junto al resto de acusados; recurrible en casación." }] },
+
+    { id: "bascunana", nombre: "Joaquín Bascuñana", cargo: "Exconsejero de Obras Públicas de la Región de Murcia", ccaa: "Murcia", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "novo_carthago", partido: "PP", estado: "absuelto", firme: null, anio: 2025, detalle: "Absuelto junto al resto de acusados; recurrible en casación." }] },
+
+    { id: "pedro_antonio", nombre: "Pedro Antonio Sánchez", cargo: "Expresidente de la Región de Murcia y exalcalde de Puerto Lumbreras", ccaa: "Murcia", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "auditorio_murcia", partido: "PP", estado: "condenado", firme: true, anio: 2024, detalle: "Condenado a 3 años de prisión y 17 de inhabilitación por prevaricación y falsedad; confirmado por el Supremo. Fue absuelto en otro proceso (caso Pasarelas)." }] },
+
+    { id: "jm_rodriguez", nombre: "José María Rodríguez", cargo: "Ex secretario general del PP balear y exconseller de Interior", ccaa: "Baleares", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "over_baleares", partido: "PP", estado: "condenado", firme: true, anio: 2022, detalle: "Condenado a 3 años y medio por prevaricación, malversación y falsedad; el Supremo confirmó la condena. Obtuvo el tercer grado." }] },
+
+    { id: "canellas", nombre: "Gabriel Cañellas", cargo: "Expresidente del Govern balear", ccaa: "Baleares", partidoActual: "PP",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "soller", partido: "PP", estado: "anulado", firme: true, anio: 1997, detalle: "El tribunal consideró probado el cohecho, pero absolvió por prescripción. Había dimitido en 1995." }] },
+
+    { id: "monago", nombre: "José Antonio Monago", cargo: "Expresidente de la Junta de Extremadura y exsenador", ccaa: "Extremadura", partidoActual: "PP",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "monago", partido: "PP", estado: "archivado", firme: true, anio: 2015, detalle: "El Supremo archivó la querella por malversación." }] },
+
+    { id: "luis_soria", nombre: "Luis Soria", cargo: "Exconsejero de Industria del Gobierno de Canarias", ccaa: "Canarias", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP" }],
+      casos: [{ caso: "eolico_canarias", partido: "PP", estado: "archivado", firme: true, anio: 2010, detalle: "El TSJ de Canarias mantuvo el archivo de la querella al no ver «base indiciaria mínima»." }] },
+
+    /* ---- PSOE / PSC ---- */
+    { id: "zapatero", nombre: "José Luis Rodríguez Zapatero", cargo: "Expresidente del Gobierno (2004-2011)", ccaa: "Nacional", partidoActual: "PSOE",
+      historial: [{ partido: "PSOE", desde: 1979 }],
+      casos: [{ caso: "plus_ultra", partido: "PSOE", estado: "investigacion", firme: null, anio: 2026, detalle: "Imputado en mayo de 2026; declaró en junio negando haber influido en el rescate. En septiembre el juez rechazó anular la causa y en octubre la amplió." }] },
+
+    { id: "rafa_rubio", nombre: "Rafael Rubio", cargo: "Ex subdelegado del Gobierno en Valencia", ccaa: "C. Valenciana", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "azud", partido: "PSOE", estado: "juicio", firme: null, anio: 2026, detalle: "Procesado en 2026; estuvo en prisión provisional. Fue cesado como subdelegado del Gobierno." }] },
+
+    { id: "jorge_rodriguez", nombre: "Jorge Rodríguez", cargo: "Expresidente de la Diputación de Valencia y alcalde de Ontinyent", ccaa: "C. Valenciana", partidoActual: "ENSUNEIX",
+      historial: [{ partido: "PSOE", hasta: 2018 }, { partido: "ENSUNEIX", desde: 2018 }],
+      casos: [{ caso: "alqueria", partido: "PSOE", estado: "absuelto", firme: null, anio: 2023, detalle: "Detenido en 2018, lo que provocó su salida del PSPV-PSOE. Absuelto en 2023; el TSJ confirmó la absolución." }] },
+
+    { id: "villen", nombre: "Fernando Villén", cargo: "Exdirector de la Faffe (Junta de Andalucía)", ccaa: "Andalucía", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "faffe", partido: "PSOE", estado: "condenado", firme: null, anio: 2024, detalle: "Condenado a 6 años, rebajados por el TSJA a 5 años y 3 meses. Tiene otra condena de 3 años y medio por una contratación irregular en la Faffe." }] },
+
+    { id: "vallejo", nombre: "Francisco Vallejo", cargo: "Exconsejero de Innovación de la Junta de Andalucía", ccaa: "Andalucía", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [
+        { caso: "invercaria", partido: "PSOE", estado: "condenado", firme: false, anio: 2026, detalle: "Condenado en julio de 2026 a 3 años y medio de prisión junto al expresidente de Invercaria." },
+        { caso: "ere", partido: "PSOE", estado: "anulado", firme: null, anio: 2024, detalle: "Condenado en la pieza política de los ERE; el Tribunal Constitucional estimó su amparo en 2024." }
+      ] },
+
+    { id: "barrientos", nombre: "Antonio Barrientos", cargo: "Exalcalde de Estepona", ccaa: "Andalucía", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "astapa", partido: "PSOE", estado: "condenado", firme: null, anio: 2024, detalle: "Condenado por cohecho a 5 meses y 7 días de suspensión de empleo y 40.000 euros de multa; la Fiscalía llegó a pedir casi 11 años." }] },
+
+    { id: "juan_guerra", nombre: "Juan Guerra", cargo: "Hermano del vicepresidente Alfonso Guerra; usaba un despacho de la Delegación del Gobierno en Sevilla", ccaa: "Andalucía", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "juan_guerra", partido: "PSOE", estado: "condenado", firme: true, anio: 1995, detalle: "Procesado en varias causas; el Supremo lo dejó condenado únicamente por un delito fiscal. Se declara inocente." }] },
+
+    { id: "toscano", nombre: "Francisco Toscano", cargo: "Exalcalde de Dos Hermanas", ccaa: "Andalucía", partidoActual: "PSOE",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "dos_hermanas", partido: "PSOE", estado: "archivado", firme: null, anio: 2026, detalle: "Querella archivada en junio de 2026: sin malversación ni tráfico de influencias y prevaricación prescrita." }] },
+
+    { id: "paco_salazar", nombre: "Paco Salazar", cargo: "Exdirigente del PSOE y exasesor en Moncloa", ccaa: "Andalucía", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "dos_hermanas", partido: "PSOE", estado: "archivado", firme: null, anio: 2026, detalle: "La querella sostenía que cobró del Ayuntamiento entre 2012 y 2017 sin trabajar; archivada en junio de 2026 por prescripción y falta de delito." }] },
+
+    { id: "urralburu", nombre: "Gabriel Urralburu", cargo: "Expresidente del Gobierno de Navarra", ccaa: "Navarra", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "urralburu", partido: "PSOE", estado: "condenado", firme: true, anio: 1999, detalle: "Condenado por cohecho y delito fiscal; la pena inicial se rebajó en apelación y empezó a cumplirla en 2001." }] },
+
+    { id: "aragon", nombre: "Antonio Aragón", cargo: "Exconsejero de Obras Públicas de Navarra", ccaa: "Navarra", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "urralburu", partido: "PSOE", estado: "condenado", firme: true, anio: 1999, detalle: "Condenado junto a Urralburu." }] },
+
+    { id: "otano", nombre: "Javier Otano", cargo: "Expresidente del Gobierno de Navarra", ccaa: "Navarra", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "urralburu", partido: "PSOE", estado: "anulado", firme: true, anio: 1999, detalle: "Dimitió en 1996 al conocerse una cuenta en Suiza; la causa contra él terminó por prescripción." }] },
+
+    { id: "fco_rodriguez_ourense", nombre: "Francisco Rodríguez", cargo: "Exalcalde de Ourense", ccaa: "Galicia", partidoActual: "PSOE",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "pokemon", partido: "PSOE", estado: "archivado", firme: null, anio: 2023, detalle: "Detenido en 2012 y dimitido como alcalde; la pieza que le afectaba fue archivada once años después." }] },
+
+    { id: "dionisio_munoz", nombre: "Dionisio Muñoz", cargo: "Ex secretario general del PSOE de Melilla", ccaa: "Melilla", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSOE" }],
+      casos: [{ caso: "melilla_votos", partido: "PSOE", estado: "condenado", firme: true, anio: 2021, detalle: "Condenado a 2 años de prisión y 30 meses de inhabilitación por delito electoral y falsedad." }] },
+
+    { id: "bustos", nombre: "Manuel Bustos", cargo: "Exalcalde de Sabadell", ccaa: "Cataluña", partidoActual: "NINGUNO",
+      historial: [{ partido: "PSC" }],
+      casos: [{ caso: "mercurio", partido: "PSC", estado: "condenado", firme: true, anio: 2021, detalle: "Varias condenas firmes; entre ellas, 3 años de prisión por ordenar retirar multas a familiares. En 2026 aceptó otra pena en una pieza separada." }] },
+
+    /* ---- Cataluña: CDC, UDC, ERC ---- */
+    { id: "gordo", nombre: "Germà Gordó", cargo: "Exconseller de Justicia y extesorero de CDC", ccaa: "Cataluña", partidoActual: "NINGUNO",
+      historial: [{ partido: "CDC" }],
+      casos: [{ caso: "tres_por_ciento", partido: "CDC", estado: "juicio", firme: null, anio: 2022, detalle: "Enviado a juicio en 2022; la Fiscalía pide 18 años y 10 meses." }] },
+
+    { id: "viloca", nombre: "Andreu Viloca", cargo: "Extesorero de CDC", ccaa: "Cataluña", partidoActual: "NINGUNO",
+      historial: [{ partido: "CDC" }],
+      casos: [{ caso: "tres_por_ciento", partido: "CDC", estado: "juicio", firme: null, anio: 2022, detalle: "Enviado a juicio en 2022; la Fiscalía pide 21 años y 4 meses." }] },
+
+    { id: "vicenc_gavalda", nombre: "Vicenç Gavaldà", cargo: "Ex secretario de organización de Unió Democràtica", ccaa: "Cataluña", partidoActual: "NINGUNO",
+      historial: [{ partido: "UDC" }],
+      casos: [{ caso: "pallerols", partido: "UDC", estado: "condenado", firme: true, anio: 2013, detalle: "Condenado por conformidad a 7 meses de prisión." }] },
+
+    { id: "lluis_gavalda", nombre: "Lluís Gavaldà", cargo: "Ex director general de Ocupació de la Generalitat", ccaa: "Cataluña", partidoActual: "NINGUNO",
+      historial: [{ partido: "UDC" }],
+      casos: [{ caso: "pallerols", partido: "UDC", estado: "condenado", firme: true, anio: 2013, detalle: "Condenado por conformidad a un año y medio de prisión." }] },
+
+    { id: "carbonell", nombre: "Aurora Carbonell", cargo: "Alcaldesa de Sitges", ccaa: "Cataluña", partidoActual: "ERC",
+      historial: [{ partido: "ERC" }],
+      casos: [{ caso: "sitges", partido: "ERC", estado: "investigacion", firme: null, anio: 2026, detalle: "Detenida en 2023 y en libertad; investigada por prevaricación y malversación. En 2026 declaró por otra línea, que niega." }] },
+
+    /* ---- Partidos regionales y locales ---- */
+    { id: "pinilla", nombre: "María Victoria Pinilla", cargo: "Exalcaldesa de La Muela (Zaragoza)", ccaa: "Aragón", partidoActual: "NINGUNO",
+      historial: [{ partido: "PAR" }],
+      casos: [{ caso: "la_muela", partido: "PAR", estado: "condenado", firme: true, anio: 2020, detalle: "Condenada por el Supremo a 11 años y 4 meses por cohecho y malversación, tras un primer juicio anulado." }] },
+
+    { id: "hormaechea", nombre: "Juan Hormaechea", cargo: "Expresidente de Cantabria", ccaa: "Cantabria", partidoActual: "NINGUNO",
+      historial: [{ partido: "PP", desde: 1987, hasta: 1990 }, { partido: "UPCA", desde: 1991, hasta: 2003 }],
+      casos: [{ caso: "hormaechea", partido: "UPCA", estado: "condenado", firme: true, anio: 1994, detalle: "Condenado por malversación y prevaricación; indultado de la pena de prisión en 1995. Llegó a la presidencia como independiente en las listas de AP-PP y fundó después la UPCA. Murió en 2020." }] },
+
+    { id: "dimas_martin", nombre: "Dimas Martín", cargo: "Fundador del Partido de Independientes de Lanzarote y expresidente del Cabildo", ccaa: "Canarias", partidoActual: "PIL",
+      historial: [{ partido: "PIL" }],
+      casos: [{ caso: "union_lanzarote", partido: "PIL", estado: "condenado", firme: true, anio: 2022, detalle: "El Supremo confirmó 7 años y 5 meses de prisión en una de las piezas principales; acumula otras condenas por corrupción." }] },
+
+    { id: "pacheco", nombre: "Pedro Pacheco", cargo: "Exalcalde de Jerez de la Frontera", ccaa: "Andalucía", partidoActual: "NINGUNO",
+      historial: [{ partido: "PA", hasta: 2001 }, { partido: "PSA", desde: 2001, hasta: 2011 }],
+      casos: [{ caso: "pacheco_asesores", partido: "PSA", estado: "condenado", firme: true, anio: 2014, detalle: "Condenado a 5 años y medio por el Supremo; tiene otras dos condenas. Fundó el Partido Socialista de Andalucía tras su etapa en el Partido Andalucista." }] },
+
+    { id: "aberchan", nombre: "Mustafa Aberchán", cargo: "Líder de Coalición por Melilla y expresidente de la Ciudad Autónoma", ccaa: "Melilla", partidoActual: "CPM",
+      historial: [{ partido: "CPM" }],
+      casos: [{ caso: "melilla_votos", partido: "CPM", estado: "condenado", firme: true, anio: 2021, detalle: "Condenado a 2 años de prisión y 30 meses de inhabilitación por la compra de votos de 2008. En 2023 la policía le investigó por otra presunta compra de votos, sin que constara imputación." }] },
+
+    { id: "jacome", nombre: "Gonzalo Pérez Jácome", cargo: "Alcalde de Ourense", ccaa: "Galicia", partidoActual: "DO",
+      historial: [{ partido: "DO" }],
+      casos: [{ caso: "jacome", partido: "DO", estado: "investigacion", firme: null, anio: 2026, detalle: "Imputado en abril de 2026 por prevaricación continuada; ha recurrido." }] },
+
+    { id: "sanz_upn", nombre: "Miguel Sanz", cargo: "Expresidente del Gobierno de Navarra", ccaa: "Navarra", partidoActual: "UPN",
+      historial: [{ partido: "UPN" }],
+      casos: [{ caso: "can_dietas", partido: "UPN", estado: "archivado", firme: true, anio: 2013, detalle: "Investigado en 2013; devolvió las dietas y la causa se archivó." }] },
+
+    { id: "barcina", nombre: "Yolanda Barcina", cargo: "Expresidenta del Gobierno de Navarra", ccaa: "Navarra", partidoActual: "UPN",
+      historial: [{ partido: "UPN" }],
+      casos: [{ caso: "can_dietas", partido: "UPN", estado: "archivado", firme: true, anio: 2013, detalle: "El Supremo rechazó imputarla al no ver delito; archivo definitivo en diciembre de 2013." }] },
+
+    { id: "torrijos", nombre: "Antonio Rodrigo Torrijos", cargo: "Ex teniente de alcalde de Sevilla y exportavoz de IU", ccaa: "Andalucía", partidoActual: "IU",
+      historial: [{ partido: "IU" }],
+      casos: [{ caso: "mercasevilla", partido: "IU", estado: "absuelto", firme: true, anio: 2016, detalle: "Absuelto; la Fiscalía, que pedía dos años de prisión, no recurrió." }] },
+
+    { id: "brines", nombre: "Agustina Brines", cargo: "Excogerente de Divalterra a propuesta de Compromís", ccaa: "C. Valenciana", partidoActual: "NINGUNO",
+      historial: [{ partido: "COMPROMIS" }],
+      casos: [{ caso: "alqueria", partido: "COMPROMIS", estado: "absuelto", firme: null, anio: 2023, detalle: "Investigada en 2018 y destituida por Compromís; absuelta con el resto de acusados." }] },
+
+    { id: "jesus_gil", nombre: "Jesús Gil", cargo: "Exalcalde de Marbella y expresidente del Atlético de Madrid", ccaa: "Andalucía", partidoActual: "NINGUNO",
+      historial: [{ partido: "GIL", desde: 1991 }],
+      casos: [{ caso: "gil_camisetas", partido: "GIL", estado: "condenado", firme: true, anio: 2002, detalle: "Condenado a inhabilitación por prevaricación; el Supremo la ratificó en 2002 y tuvo que dejar la alcaldía. Murió en 2004." }] },
+
+    /* ---- Sin partido o afiliación no confirmada ---- */
+    { id: "rafael_delgado", nombre: "Rafael Delgado", cargo: "Exviceconsejero de Economía de la Junta de Castilla y León (Gobierno del PP)", ccaa: "Castilla y León", partidoActual: "NINGUNO",
+      historial: [],
+      casos: [
+        { caso: "perla_negra", partido: "NINGUNO", estado: "condenado", firme: false, anio: 2025, detalle: "Condenado a 2 años y medio por prevaricación y malversación; recurrible." },
+        { caso: "trama_eolica", partido: "NINGUNO", estado: "juicio", firme: null, anio: 2026, detalle: "Juzgado entre 2025 y enero de 2026; la Fiscalía pide 42 años. Visto para sentencia." }
+      ] },
+
+    { id: "celso_perdomo", nombre: "Celso Perdomo", cargo: "Exdirector general de Industria del Gobierno de Canarias", ccaa: "Canarias", partidoActual: "NINGUNO",
+      historial: [],
+      casos: [{ caso: "eolico_canarias", partido: "NINGUNO", estado: "condenado", firme: null, anio: 2014, detalle: "Condenado a 2 años y 4 meses por revelación de información, cohecho y malversación. Alto cargo del Gobierno CC-PP; no consta su militancia." }] },
+
+    { id: "fco_serrano", nombre: "Francisco Serrano", cargo: "Exportavoz de Vox en el Parlamento de Andalucía", ccaa: "Andalucía", partidoActual: "NINGUNO",
+      historial: [{ partido: "VOX", hasta: 2020 }],
+      casos: [{ caso: "serrano_prestamo", partido: "NINGUNO", estado: "juicio", firme: null, anio: 2027, detalle: "Hechos de 2016, como empresario y antes de entrar en Vox. Juicio fijado para marzo de 2027; niega los hechos." }] }
   ]
 };

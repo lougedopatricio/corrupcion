@@ -64,10 +64,34 @@ Todo está en `data/datos.js`.
 
 ## Cobertura actual (corte: 8-nov-2026)
 
-61 personas y 41 casos de PP, PSOE/PSC, CDC/CiU, Junts, PNV, Coalición Canaria, GIL, Unió Mallorquina, IU y
-Podemos. Entre otros: Filesa, Roldán, Naseiro, Banca Catalana, Malaya, Gürtel, Palau, Pretoria, ERE, Nóos,
-Púnica, Lezo, Kitchen, tarjetas black, De Miguel, Las Teresitas, Erial, Taula, Pujol, Koldo (mascarillas y obra
-pública), Leire Díez/SEPI, Mediador, Montoro, Diputación de Badajoz y mascarillas de Almería.
+**109 personas y 78 casos**, desde el caso Banca Catalana (1984) hasta las causas abiertas en 2026,
+repartidos entre más de 20 partidos estatales, autonómicos y locales, actuales y desaparecidos:
+
+| Ámbito | Partidos incluidos |
+|---|---|
+| Estatales | PP, PSOE/PSC, IU, Podemos, Vox (como trayectoria) |
+| Cataluña | CDC/CiU, Unió Democràtica, Junts, ERC |
+| País Vasco y Navarra | PNV, UPN |
+| Comunitat Valenciana | Compromís, Ens Uneix |
+| Andalucía | GIL, Partido Andalucista, Partido Socialista de Andalucía |
+| Canarias | Coalición Canaria, Independientes de Lanzarote |
+| Otros | Unió Mallorquina, Partido Aragonés, UPCA (Cantabria), Coalición por Melilla, Democracia Ourensana |
+
+Además de los grandes casos (Filesa, Roldán, Gürtel, ERE, Púnica, Palau, Pujol, Koldo…) se incluyen, entre
+otros: Brugal, Emarsa, Azud, Alquería, financiación del PP valenciano, Gürtel Boadilla y visita del Papa,
+Auditorio y Novo Carthago (Murcia), Faffe, Invercaria, Mercasevilla, Astapa, Juan Guerra, las camisetas de
+Gil, caso asesores de Jerez, compra de votos en Melilla, Pallerols, Mercurio, 3%, Sitges, La Muela,
+Hormaechea, Unión (Lanzarote), Eólico (Canarias), Urralburu, dietas de Caja Navarra, Pokémon, Over, túnel de
+Sóller, Perla Negra, trama eólica de Castilla y León, viajes de Monago, Dos Hermanas, Plus Ultra y Auria TV.
+
+**Partidos sin casos judiciales relevantes encontrados.** En la búsqueda no aparecieron condenas ni
+imputaciones de relevancia por corrupción de cargos de Ciudadanos, EH Bildu, BNG o Más Madrid, ni de Vox
+como partido. El único caso ligado a Vox es el de su exportavoz andaluz Francisco Serrano, por hechos de 2016
+anteriores a su entrada en el partido, y figura así en los datos.
+
+**Militancia no confirmada.** Algunos altos cargos designados (por ejemplo, Rafael Delgado en Castilla y León
+o Celso Perdomo en Canarias) figuran como "Sin partido / no consta" porque no se ha podido confirmar su
+afiliación, aunque se indica el Gobierno en el que servían.
 
 No es exhaustiva: hay cientos de causas municipales que se pueden ir incorporando.
 
